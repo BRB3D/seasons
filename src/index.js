@@ -8,6 +8,10 @@ class App extends React.Component {
     super(props);//reference to the parent constructor function.
     this.state = { lat: null, errorMessage: '' };//lat is abbreviated from latitude
 
+   
+  }
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ lat: position.coords.latitude })
@@ -16,6 +20,7 @@ class App extends React.Component {
     );
   }
 
+  
   // React need to define render !!
   render() {
     if (this.state.errorMessage && !this.state.lat) {
@@ -29,5 +34,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <App />, document.querySelector('#root')
+  <App />,
+  document.querySelector('#root')
 )
